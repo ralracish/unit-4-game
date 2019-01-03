@@ -17,8 +17,10 @@ $(document).ready(function(){
   var score=0;
   var wins=0;
   var losses=0;
-  $("#wins").text(wins);
-  $("#losses").text(losses);
+  $("#wins").text("Wins: " + wins);
+  $("#losses").text("Losses: " + losses);
+  $("#wins").css("font-size", "30px");
+  $("#losses").css("font-size", "30px");
 
   function reset(){
   //To get new target number
@@ -33,29 +35,32 @@ $(document).ready(function(){
     var crystalFour = Math.floor(Math.random() * 12) + 1; // creates crystal 4 value, a random number between 1-12
     var score=0
   
-      console.log(crystalOne, crystalTwo, crystalThree, crystalFour)
-    $("#score").text(score);
+    console.log(crystalOne, crystalTwo, crystalThree, crystalFour)
+    
+    wins=0;
+    losses=0;
+
   }
   function youWin(){
     wins++
-    var wins = $("#wins");
-    wins.attr(wins);
+    $("#wins").text("Wins: " + wins);
     alert("You win!");
     reset();
+    console.log(wins);
     }
 
   function youLose(){
     losses++
-    var losses = $("#losses");
-    losses.attr("losses");
+    $("#losses").text("Losses: " + losses);
     alert("You lose!!");
     reset();
+    console.log(losses);
    }
 
   $("#crystal-1").on ('click', function(){
     score = score + crystalOne;
-    console.log("New userTotal= " + score);
-    $("#score").text(score); 
+    console.log("Score= " + score);
+    $("p").text(score); 
         if (score == targetNumber){ 
           youWin();
         }
@@ -66,8 +71,8 @@ $(document).ready(function(){
 
   $("#crystal-2").on ('click', function(){
     score = score + crystalTwo;
-    console.log("New userTotal= " + score);
-    $("#score").text(score);
+    console.log("Score= " + score);
+    $("p").text(score);
       if (score == targetNumber){ 
         youWin();
       }
@@ -78,8 +83,8 @@ $(document).ready(function(){
 
   $("#crystal-3").on ('click', function(){
     score = score + crystalThree;
-    console.log("New userTotal= " + score);
-    $("#score").text(score); 
+    console.log("Score= " + score);
+    $("p").text(score); 
     if (score == targetNumber){ 
       youWin();
     }
@@ -90,8 +95,8 @@ $(document).ready(function(){
 
   $("#crystal-4").on ('click', function(){
     score = score + crystalFour;
-    console.log("New userTotal= " + score);
-    $("#score").text(score); 
+    console.log("Score= " + score);
+    $("p").text(score); 
     if (score == targetNumber){ 
       youWin();
     }
