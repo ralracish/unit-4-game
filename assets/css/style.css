@@ -18,3 +18,8 @@ textarea {
 
 	width: 30%;
 }
+.crystal-image {
+    display: inline-block;
+    height:100px;
+    width:100px;
+}

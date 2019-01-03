@@ -33,8 +33,15 @@
     <h2>Number to Guess: <span id="number-to-guess"></span></h2>
   
     <!-- Note that this div is now empty. We will fill it dynamically -->
-    <div id="crystals">
-    </div>
+    <!-- We then wrapped our crystal image in an id "#crystals" -->
+  <div id="crystals">
+
+    <!-- We gave our crystal image the class ".crystal-image" to apply the resize-->
+    <img class="crystal-image" src="assets/images/crystalimage1.jpg" alt="crystal 1">
+    <img class="crystal-image" src="assets/images/crystalimage2.jpg" alt="crystal 2">
+    <img class="crystal-image" src="assets/images/crystalimage3.jpg" alt="crystal 3">
+    <img class="crystal-image" src="assets/images/crystalimage4.jpg" alt="crystal 4">
+  </div>
 <script>
 // function startGame() {
 
@@ -42,29 +49,7 @@
 </script>
 </body>
 
-* There will be four crystals displayed as buttons on the page.
 
-* The player will be shown a random number at the start of the game.
-
-* When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
-
-  * Your game will hide this amount until the player clicks a crystal.
-  * When they do click one, update the player's score counter.
-
-* The player wins if their total score matches the random number from the beginning of the game.
-
-* The player loses if their score goes above the random number.
-* The game restarts whenever the player wins or loses.
-
-  * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
-
-* The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
-
-##### Option 1 Game design notes
-
-* The random number shown at the start of the game should be between 19 - 120.
-
-* Each crystal should have a random hidden value between 1 - 12.
 
 <!-- <script> -->    
 
