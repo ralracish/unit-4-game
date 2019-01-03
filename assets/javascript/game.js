@@ -1,95 +1,102 @@
 $(document).ready(function(){
 // Global variables
 
-var targetNumber=0
-var randoms=[]
-var counter=0
-var wins=0
-var losses=0
+//To get target number between 19 and 120
+  var targetNumber=Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+  console.log(targetNumber);
+  $("#number-to-guess").text("Number to Guess:  " + targetNumber)
 
-//To get target number
+//To generate random numbers for each crystal
+  var crystalOne = Math.floor(Math.random() * 12) + 1; // creates crystal 1 value, a random number between 1-12
+  var crystalTwo = Math.floor(Math.random() * 12) + 1; // creates crystal 2 value, a random number between 1-12
+  var crystalThree = Math.floor(Math.random() * 12) + 1; // creates crystal 3 value, a random number between 1-12
+  var crystalFour = Math.floor(Math.random() * 12) + 1; // creates crystal 4 value, a random number between 1-12
 
-//Create the function to start the game variables, but not actually run the function yet
-function startGame() {
-  var targetNumber=0
-  var randoms=[]
-  var counter=0
-
-}
-
-var targetNumber=Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+    console.log(crystalOne, crystalTwo, crystalThree, crystalFour)
   
-console.log(targetNumber);
+  var score=0;
+  var wins=0;
+  var losses=0;
+  $("#wins").text(wins);
+  $("#losses").text(losses);
 
-$("#number-to-guess").text("Number to Guess:" = targetNumber);
+  function reset(){
+  //To get new target number
+    var targetNumber=Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+    console.log(targetNumber);
+    $("#number-to-guess").text("Number to Guess:  " + targetNumber)
 
-
-// randoms = Array.from({length: 4}, () => Math.floor(Math.random() * 12));
-
-// console.log(randoms)
+  //To generate new random numbers for each crystal
     var crystalOne = Math.floor(Math.random() * 12) + 1; // creates crystal 1 value, a random number between 1-12
     var crystalTwo = Math.floor(Math.random() * 12) + 1; // creates crystal 2 value, a random number between 1-12
     var crystalThree = Math.floor(Math.random() * 12) + 1; // creates crystal 3 value, a random number between 1-12
     var crystalFour = Math.floor(Math.random() * 12) + 1; // creates crystal 4 value, a random number between 1-12
+    var score=0
+  
+      console.log(crystalOne, crystalTwo, crystalThree, crystalFour)
+    $("#score").text(score);
+  }
+  function youWin(){
+    wins++
+    var wins = $("#wins");
+    wins.attr(wins);
+    alert("You win!");
+    reset();
+    }
 
-$(".crystal-image").on("click", function() {
+  function youLose(){
+    losses++
+    var losses = $("#losses");
+    losses.attr("losses");
+    alert("You lose!!");
+    reset();
+   }
 
-  // Determining the crystal's value requires us to extract the value from the data attribute.
-  // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-  // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-  // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
-  var crystalValue = ($(this).attr("data-crystalvalue"));
-  crystalValue = parseInt(crystalValue);
-  // We then add the crystalValue to the user's "counter" which is a global variable.
-  // Every click, from every crystal adds to the global counter.
-  counter += crystalValue;
-
-
-
-
-// roundComplete() function
-    // Here we will have all of the code that needs to be run after each guess is made.
-    // function roundComplete() {
-
-      // First, log an initial status update in the console
-      // telling us how many wins and losses there are.
-      console.log("wins" + youWin + " | losses " + youLose);
-
-      
-    
-        // All of the same game win-lose logic applies. So the rest remains unchanged.
-        alert("New score: " + counter);
-    
-        if (counter === targetNumber) {
-          alert("You win!");
-          startGame();
+  $("#crystal-1").on ('click', function(){
+    score = score + crystalOne;
+    console.log("New userTotal= " + score);
+    $("#score").text(score); 
+        if (score == targetNumber){ 
+          youWin();
         }
-    
-        else if (counter >= targetNumber) {
-          alert("You lose!!");
-          startGame();
+        else if (score > targetNumber) {
+          youLose();
         }
-      
-   
-    //  }
-   
-  //  }
-   
-   // MAIN PROCESS (THIS IS THE CODE THAT CONTROLS WHAT IS ACTUALLY RUN)
-   // ==================================================================
-   
-   // Starts the Game by running the startGame() function
-  //  startGame();
-   
-   // Then initiates the function for capturing clicks.
-  //  
-   
-     // Runs the code to add score
-        // addScore();
-    // 
-   
-     // Runs the code that ends each round.
-    //  roundComplete();
-  //  };
-      })
+  })
+
+  $("#crystal-2").on ('click', function(){
+    score = score + crystalTwo;
+    console.log("New userTotal= " + score);
+    $("#score").text(score);
+      if (score == targetNumber){ 
+        youWin();
+      }
+      else if (score > targetNumber) {
+        youLose();
+      }
+    })
+
+  $("#crystal-3").on ('click', function(){
+    score = score + crystalThree;
+    console.log("New userTotal= " + score);
+    $("#score").text(score); 
+    if (score == targetNumber){ 
+      youWin();
+    }
+    else if (score > targetNumber) {
+      youLose();
+    }
+  })
+
+  $("#crystal-4").on ('click', function(){
+    score = score + crystalFour;
+    console.log("New userTotal= " + score);
+    $("#score").text(score); 
+    if (score == targetNumber){ 
+      youWin();
+    }
+    else if (score > targetNumber) {
+      youLose();
+    }  
+  })
+})
